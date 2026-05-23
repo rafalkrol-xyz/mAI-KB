@@ -5,8 +5,10 @@ use clap::Parser;
 #[derive(Parser, Debug)]
 struct Cli {
     /// Path to the directory to create the knowledge base from
+    #[arg(short = 'd', long = "dir", default_value = ".")]
     dir: std::path::PathBuf,
-    /// Provider to use for the knowledge base, e.g. AWS< GCP, local
+    /// Provider to use for the knowledge base, e.g. AWS, GCP, local
+    #[arg(short = 'p', long = "provider", default_value = "aws")]
     provider: String, // TODO: change to an enum
 }
 
