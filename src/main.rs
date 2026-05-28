@@ -46,3 +46,20 @@ fn main() {
         Commands::Ls { provider } => println!("Listing knowledge bases for provider: {}", provider),
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use clap::Parser;
+
+    #[test]
+    fn test_ls_defaults_to_aws() {
+        // We pass "mkb" as the first argument because it's the program name
+        let args = Cli::try_parse_from(["mkb", "ls"])
+            .expect("The `ls` command should be a valid command for the mkb cli tool");
+        // Check that it parsed as the Ls variant and that the provider is Aws
+        match args.command {
+            Commands::Ls { provider } => assert_eq!(provider, Provider::Aws),
+        }
+    }
+}
