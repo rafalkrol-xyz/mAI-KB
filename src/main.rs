@@ -11,7 +11,7 @@ struct Cli {
     command: Commands,
 }
 
-#[derive(Subcommand, Debug)]
+#[derive(Subcommand, Debug, PartialEq)]
 enum Commands {
     /// List all knowledge bases for a given provider
     #[command(name = "ls", alias = "list")]
@@ -22,7 +22,7 @@ enum Commands {
 }
 
 /// Provider to use for the knowledge base, e.g. AWS, GCP, local
-#[derive(ValueEnum, Clone, Debug)]
+#[derive(ValueEnum, Clone, Debug, PartialEq)]
 enum Provider {
     Aws,
     // Gcp,
