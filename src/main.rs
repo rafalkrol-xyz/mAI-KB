@@ -1,5 +1,5 @@
-use std::fmt;
 use clap::{Parser, Subcommand, ValueEnum};
+use std::fmt;
 
 /// Create a knowledge base from a given directory with a given provider.
 /// Defaults to this directory (`.`) and AWS.
@@ -18,7 +18,7 @@ enum Commands {
     Ls {
         #[arg(short = 'p', long = "provider", default_value_t = Provider::Aws)]
         provider: Provider,
-    }
+    },
 }
 
 /// Provider to use for the knowledge base, e.g. AWS, GCP, local
